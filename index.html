@@ -33,6 +33,7 @@
     letter-spacing:-0.005em;
     -webkit-font-smoothing:antialiased;
   }
+  body.locked{overflow:hidden}
 
   .wrap{max-width:980px;margin:0 auto;padding:0 32px}
 
@@ -56,7 +57,7 @@
     font-size:clamp(2.4rem,5.6vw,3.9rem);
     font-weight:600;
     line-height:1.04;
-    max-width:15ch;
+    max-width:17ch;
   }
   .lede{
     max-width:var(--measure);
@@ -68,38 +69,109 @@
   }
   .lede strong{color:var(--ink);font-weight:500}
 
-  /* ---------- career spine ---------- */
-  .spine{
-    margin:76px 0 0;
-    display:grid;
-    grid-template-columns:11fr 9fr 6fr 5fr;
-    gap:0 32px;
+  /* ---------- timeline ---------- */
+  .timeline{margin:82px 0 0;position:relative}
+  .timeline-hint{
+    font-size:12.5px;color:var(--faint);font-weight:500;margin:0 0 18px;
   }
-  .phase{padding-top:18px;position:relative}
-  .phase::before{
-    content:"";
-    position:absolute;top:0;left:0;right:32px;height:2px;
-    background:var(--ink);opacity:.16;
+  .segments{
+    display:grid;
+    grid-template-columns:11fr 9fr 3.2fr 2.6fr;
+    gap:0;
+  }
+  .seg{position:relative;padding-right:28px}
+  .seg:last-child{padding-right:0}
+
+  .seg .tick{
+    display:block;font-size:12px;font-weight:500;color:var(--faint);
+    letter-spacing:.02em;margin:0 0 9px;
+  }
+  /* the axis: each segment contributes its own piece, forming one continuous line */
+  .seg .bar{
+    position:relative;height:2px;background:var(--ink);opacity:.13;
     transform:scaleX(0);transform-origin:left center;
     animation:draw .7s cubic-bezier(.22,.72,.3,1) forwards;
   }
-  .phase:nth-child(1)::before{animation-delay:.12s}
-  .phase:nth-child(2)::before{animation-delay:.40s}
-  .phase:nth-child(3)::before{animation-delay:.68s}
-  .phase:nth-child(4)::before{animation-delay:.96s;background:var(--signal);opacity:1}
+  .seg:nth-child(1) .bar{animation-delay:.12s}
+  .seg:nth-child(2) .bar{animation-delay:.40s}
+  .seg:nth-child(3) .bar{animation-delay:.68s}
+  .seg:nth-child(4) .bar{animation-delay:.96s;background:var(--signal);opacity:1}
   @keyframes draw{to{transform:scaleX(1)}}
 
-  .phase .yrs{
-    display:block;font-size:12.5px;font-weight:500;color:var(--faint);
-    letter-spacing:.01em;
+  .seg .bar::before{  /* node */
+    content:"";position:absolute;left:0;top:50%;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--ink);
+    transform:translate(-1px,-50%);
+    transition:border-color .18s ease,background .18s ease;
   }
-  .phase .what{font-size:1.02rem;font-weight:600;margin:5px 0 7px}
-  .phase:nth-child(4) .what{color:var(--signal)}
-  .phase p{margin:0;font-size:.9rem;color:var(--mid);line-height:1.58}
+  .seg:nth-child(4) .bar::before{border-color:var(--signal)}
+  .seg:last-child .bar::after{  /* open end marker for "now" */
+    content:"";position:absolute;right:0;top:50%;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--signal);transform:translateY(-50%);
+  }
+
+  .node-btn{
+    appearance:none;background:none;border:0;padding:14px 0 0;margin:0;
+    font:inherit;text-align:left;color:inherit;cursor:pointer;display:block;width:100%;
+  }
+  .node-btn .what{
+    font-size:1.02rem;font-weight:600;letter-spacing:-0.02em;
+    transition:color .18s ease;
+  }
+  .seg:nth-child(4) .node-btn .what{color:var(--signal)}
+  .node-btn .more{
+    display:block;font-size:12.5px;color:var(--faint);font-weight:500;margin-top:4px;
+    transition:color .18s ease;
+  }
+  .seg:hover .node-btn .what,
+  .seg.open .node-btn .what{color:var(--signal)}
+  .seg:hover .node-btn .more,
+  .seg.open .node-btn .more{color:var(--signal)}
+  .seg:hover .bar,
+  .seg.open .bar{opacity:.34}
+  .seg:nth-child(4):hover .bar,
+  .seg:nth-child(4).open .bar{opacity:1}
+  .seg:hover .bar::before,
+  .seg.open .bar::before{background:var(--signal);border-color:var(--signal)}
+  .node-btn:focus-visible{outline:1.5px solid var(--signal);outline-offset:5px;border-radius:3px}
+
+  /* popover */
+  .pop{
+    position:absolute;top:calc(100% + 14px);left:0;z-index:30;
+    width:300px;max-width:78vw;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:0 1px 2px rgba(15,30,46,.04),0 12px 32px rgba(15,30,46,.09);
+    padding:18px 20px 20px;
+    opacity:0;visibility:hidden;transform:translateY(-5px);
+    transition:opacity .18s ease,transform .18s ease,visibility .18s;
+  }
+  .seg:nth-child(3) .pop,
+  .seg:nth-child(4) .pop{left:auto;right:0}
+  .seg:hover .pop,
+  .seg:focus-within .pop,
+  .seg.open .pop{opacity:1;visibility:visible;transform:translateY(0)}
+  .pop h3{font-size:.98rem;margin:0 0 3px}
+  .pop .yrs{display:block;font-size:12px;color:var(--faint);font-weight:500;margin:0 0 10px}
+  .pop p{margin:0;font-size:.92rem;color:var(--mid);line-height:1.6}
+  .pop .orgs{
+    margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line-soft);
+    font-size:12.5px;color:var(--faint);font-weight:500;
+  }
+  .pop .close{display:none}
+  .scrim{
+    position:fixed;inset:0;background:rgba(15,30,46,.38);
+    opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s;
+    z-index:25;
+  }
+  .scrim.on{opacity:1;visibility:visible}
 
   /* ---------- range ---------- */
   .range{
-    margin:96px 0 0;
+    margin:104px 0 0;
     display:grid;grid-template-columns:repeat(3,1fr);gap:44px;
   }
   .range h2{font-size:1.02rem;line-height:1.35;margin:0 0 10px;max-width:22ch}
@@ -133,7 +205,6 @@
     display:flex;gap:20px;white-space:nowrap;padding-top:4px;
     font-size:13.5px;font-weight:500;color:var(--faint);
   }
-  .build .links a:hover{color:var(--signal)}
 
   /* ---------- footer ---------- */
   footer{
@@ -145,7 +216,9 @@
   footer .ways{display:flex;flex-wrap:wrap;gap:24px}
 
   @media (max-width:860px){
-    .spine{grid-template-columns:1fr 1fr;gap:34px 32px}
+    .segments{grid-template-columns:1fr 1fr;gap:30px 24px}
+    .seg{padding-right:0}
+    .seg:nth-child(3) .pop{left:0;right:auto}
     .range{grid-template-columns:1fr;gap:34px}
     .range h2{max-width:none}
     .row{grid-template-columns:1fr;gap:4px}
@@ -155,18 +228,35 @@
     .hero{padding-top:72px}
     section{padding-top:92px}
   }
-  @media (max-width:540px){
+
+  /* touch / small screens: the popover becomes a modal sheet */
+  @media (max-width:640px){
     .wrap{padding:0 22px}
-    .spine{grid-template-columns:1fr;gap:26px}
-    .phase::before{right:0}
+    .segments{grid-template-columns:1fr;gap:26px}
+    .seg:hover .pop,
+    .seg:focus-within .pop{opacity:0;visibility:hidden}
+    .pop{
+      position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-width:none;
+      border-radius:14px 14px 0 0;border-bottom:none;
+      padding:26px 24px calc(26px + env(safe-area-inset-bottom));
+      transform:translateY(14px);
+    }
+    .seg.open .pop{opacity:1;visibility:visible;transform:translateY(0)}
+    .pop .close{
+      display:block;appearance:none;background:none;border:0;font:inherit;cursor:pointer;
+      margin:18px 0 0;padding:0;font-size:14px;font-weight:600;color:var(--signal);
+    }
   }
+
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .phase::before{animation:none;transform:scaleX(1)}
+    .seg .bar{animation:none;transform:scaleX(1)}
+    .pop,.scrim,.node-btn .what,.node-btn .more,.seg .bar{transition:none}
   }
 </style>
 </head>
 <body>
+<div class="scrim" data-scrim hidden></div>
 <div class="wrap">
 
   <header class="masthead">
@@ -179,35 +269,92 @@
   </header>
 
   <div class="hero">
-    <h1>Between the code and the release calendar.</h1>
+    <h1>Between the code, the customer, and the calendar.</h1>
     <p class="lede">
-      Product delivery leader, <strong>17+ years</strong> at the intersection of engineering,
-      product, and execution. I started as a front-end engineer building the CMS content models
-      behind 30+ Hearst properties and 145M monthly visitors, grew into agile leadership across a
-      100+ brand portfolio, and most recently ran VP-level product delivery for JPMorgan Chase's
-      global Employee Experience web and mobile platforms.
+      Product delivery leader, <strong>17+ years</strong> turning what customers need into
+      product that ships. I built the CMS content models behind 30+ Hearst properties and 145M
+      monthly visitors, led agile delivery across a 100+ brand portfolio, and most recently owned
+      the roadmap for web, mobile, and personalization on JPMorgan Chase's global Employee
+      Experience platforms. My job is the whole line — the customer problem, the architecture that
+      solves it, and the date it lands.
     </p>
 
-    <div class="spine" aria-label="Career arc">
-      <div class="phase">
-        <span class="yrs">2004 – 2015</span>
-        <div class="what">Writing the code</div>
-        <p>Front-end engineer and digital PM. CMS content types, templates, and components across 30+ sites.</p>
-      </div>
-      <div class="phase">
-        <span class="yrs">2015 – 2024</span>
-        <div class="what">Running the teams</div>
-        <p>Agile and scrum leadership at LiveIntent and Hearst. 100+ brands, 60 sites, a global consent framework.</p>
-      </div>
-      <div class="phase">
-        <span class="yrs">2024 – 2026</span>
-        <div class="what">Owning delivery</div>
-        <p>VP-level product delivery at JPMorgan Chase. Web, mobile, and personalization for a global workforce.</p>
-      </div>
-      <div class="phase">
-        <span class="yrs">2026 –</span>
-        <div class="what">Building with AI</div>
-        <p>RAG knowledge bases, LLM extraction pipelines, and agentic retrieval in regulated environments.</p>
+    <div class="timeline">
+      <p class="timeline-hint">Twenty-two years, four phases. Open one.</p>
+      <div class="segments">
+
+        <div class="seg">
+          <span class="tick">2004</span>
+          <div class="bar"></div>
+          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-1">
+            <span class="what">Writing the code</span>
+            <span class="more">2004 – 2015</span>
+          </button>
+          <div class="pop" id="phase-1" role="dialog" aria-modal="false" aria-label="Writing the code, 2004 to 2015">
+            <h3>Writing the code</h3>
+            <span class="yrs">2004 – 2015</span>
+            <p>Front-end engineer and digital project manager. Built the CMS content types editors
+              used to publish, and hand-coded the components rendered to 145M monthly visitors
+              across 30+ properties.</p>
+            <div class="orgs">Defy Media · Hearst Digital Media</div>
+            <button class="close" type="button" data-close>Close</button>
+          </div>
+        </div>
+
+        <div class="seg">
+          <span class="tick">2015</span>
+          <div class="bar"></div>
+          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-2">
+            <span class="what">Running the teams</span>
+            <span class="more">2015 – 2024</span>
+          </button>
+          <div class="pop" id="phase-2" role="dialog" aria-modal="false" aria-label="Running the teams, 2015 to 2024">
+            <h3>Running the teams</h3>
+            <span class="yrs">2015 – 2024</span>
+            <p>Agile and scrum leadership across 100+ brands and 60 sites. Launched a global consent
+              framework across 40+ international sites in 14 weeks, and standardized CMS content
+              types and taxonomy for search and ad categorization.</p>
+            <div class="orgs">LiveIntent · Hearst Magazines</div>
+            <button class="close" type="button" data-close>Close</button>
+          </div>
+        </div>
+
+        <div class="seg">
+          <span class="tick">2024</span>
+          <div class="bar"></div>
+          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-3">
+            <span class="what">Owning delivery</span>
+            <span class="more">2024 – 2026</span>
+          </button>
+          <div class="pop" id="phase-3" role="dialog" aria-modal="false" aria-label="Owning delivery, 2024 to 2026">
+            <h3>Owning delivery</h3>
+            <span class="yrs">2024 – 2026</span>
+            <p>VP-level product delivery for web, mobile, and personalization. Feature-flag and
+              API-driven targeting by region, building, and user, and a tag-based agentic benefits
+              platform that answered the question instead of returning a search page.</p>
+            <div class="orgs">JPMorgan Chase</div>
+            <button class="close" type="button" data-close>Close</button>
+          </div>
+        </div>
+
+        <div class="seg">
+          <span class="tick">2026</span>
+          <div class="bar"></div>
+          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-4">
+            <span class="what">Building with AI</span>
+            <span class="more">2026 – now</span>
+          </button>
+          <div class="pop" id="phase-4" role="dialog" aria-modal="false" aria-label="Building with AI, 2026 to now">
+            <h3>Building with AI</h3>
+            <span class="yrs">2026 – now</span>
+            <p>RAG knowledge bases, LLM extraction pipelines, and agentic retrieval in regulated
+              environments — alongside a 16-feature program increment on a policyholder
+              self-service platform.</p>
+            <div class="orgs">Insight Ally · Capgemini</div>
+            <button class="close" type="button" data-close>Close</button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -360,5 +507,57 @@
   </footer>
 
 </div>
+
+<script>
+(function(){
+  var segs  = Array.prototype.slice.call(document.querySelectorAll('.seg'));
+  var scrim = document.querySelector('[data-scrim]');
+  var sheet = window.matchMedia('(max-width: 640px)');
+
+  function closeAll(refocus){
+    segs.forEach(function(seg){
+      if(!seg.classList.contains('open')) return;
+      seg.classList.remove('open');
+      seg.querySelector('.node-btn').setAttribute('aria-expanded','false');
+      if(refocus) seg.querySelector('.node-btn').focus();
+    });
+    scrim.classList.remove('on');
+    scrim.hidden = true;
+    document.body.classList.remove('locked');
+  }
+
+  function open(seg){
+    closeAll(false);
+    seg.classList.add('open');
+    seg.querySelector('.node-btn').setAttribute('aria-expanded','true');
+    if(sheet.matches){
+      scrim.hidden = false;
+      requestAnimationFrame(function(){ scrim.classList.add('on'); });
+      document.body.classList.add('locked');
+    }
+  }
+
+  segs.forEach(function(seg){
+    var btn = seg.querySelector('.node-btn');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      seg.classList.contains('open') ? closeAll(false) : open(seg);
+    });
+    var close = seg.querySelector('[data-close]');
+    if(close) close.addEventListener('click', function(e){
+      e.stopPropagation();
+      closeAll(true);
+    });
+    seg.querySelector('.pop').addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+
+  scrim.addEventListener('click', function(){ closeAll(false); });
+  document.addEventListener('click', function(){ closeAll(false); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAll(true);
+  });
+  sheet.addEventListener('change', function(){ closeAll(false); });
+})();
+</script>
 </body>
 </html>
