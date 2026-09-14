@@ -3,561 +3,514 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Justin Polomcean — Product Delivery</title>
-<meta name="description" content="Product delivery leader with 17+ years between engineering and execution. Hearst, LiveIntent, JPMorgan Chase, Capgemini.">
+<title>Justin Polomcean — Technical Program Management &amp; Product Delivery</title>
+<meta name="description" content="Justin Polomcean runs delivery programs in regulated environments — banking, life insurance, healthcare compliance, publisher privacy — and builds the AI tooling that supports them.">
+<meta property="og:title" content="Justin Polomcean — Technical Program Management &amp; Product Delivery">
+<meta property="og:description" content="Delivery leadership across financial services, insurance, healthcare and digital media, plus hands-on AI and automation builds.">
+<meta property="og:type" content="website">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --ink:#0F1E2E;
-    --mid:#64748B;
-    --faint:#94A3B0;
-    --line:rgba(15,30,46,.10);
-    --line-soft:rgba(15,30,46,.06);
-    --bg:#FFFFFF;
-    --signal:#176B5A;
-    --measure:60ch;
+    --paper:#E6E8E2;
+    --panel:#F5F6F2;
+    --ink:#16211D;
+    --ink-soft:#4C574F;
+    --rule:#C5CAC0;
+    --plan:#1D4E6B;
+    --go:#3E7A55;
+    --watch:#A97B22;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --pad: clamp(1.25rem, 5vw, 3.5rem);
   }
 
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
   body{
     margin:0;
-    background:var(--bg);
+    background:var(--paper);
     color:var(--ink);
-    font-family:Manrope,system-ui,-apple-system,sans-serif;
-    font-size:16.5px;
-    font-weight:400;
+    font-family:"Newsreader",Georgia,serif;
+    font-size:17px;
     line-height:1.65;
-    letter-spacing:-0.005em;
-    -webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums;
   }
-  body.locked{overflow:hidden}
+  a{color:var(--plan);text-decoration:none;border-bottom:1px solid rgba(29,78,107,.35)}
+  a:hover{border-bottom-color:var(--plan)}
+  a:focus-visible{outline:2px solid var(--plan);outline-offset:3px;border-radius:2px}
+  p{margin:0 0 1rem;max-width:62ch}
+  ul{margin:0;padding:0;list-style:none}
 
-  .wrap{max-width:980px;margin:0 auto;padding:0 32px}
-
-  a{color:inherit;text-decoration:none;transition:color .18s ease}
-  a:hover{color:var(--signal)}
-  a:focus-visible{outline:1.5px solid var(--signal);outline-offset:4px;border-radius:3px}
-
-  h1,h2,h3{font-weight:600;letter-spacing:-0.028em;margin:0}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad)}
 
   /* ---------- masthead ---------- */
-  .masthead{
-    display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;
-    padding:34px 0 0;
-  }
-  .wordmark{font-weight:600;font-size:15.5px;letter-spacing:-0.01em}
-  .masthead nav{display:flex;gap:26px;font-size:14.5px;color:var(--mid);font-weight:500}
+  .masthead{padding:1.5rem 0 0;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:baseline}
+  .mark{font-family:"Archivo",sans-serif;font-weight:600;font-size:.95rem;border:0}
+  .masthead nav{display:flex;flex-wrap:wrap;gap:1.25rem;font-family:"Archivo",sans-serif;font-size:.9rem}
+  .masthead nav a{border:0;color:var(--ink-soft)}
+  .masthead nav a:hover{color:var(--plan)}
 
   /* ---------- hero ---------- */
-  .hero{padding:96px 0 0}
-  h1{
-    font-size:clamp(2.4rem,5.6vw,3.9rem);
-    font-weight:600;
-    line-height:1.04;
-    max-width:17ch;
+  .hero{padding:clamp(3rem,9vw,6rem) 0 2.5rem}
+  .hero h1{
+    font-family:"Archivo",sans-serif;
+    font-weight:800;
+    font-size:clamp(2.7rem,7.5vw,5rem);
+    line-height:.95;
+    letter-spacing:-.035em;
+    margin:0 0 1.25rem;
   }
-  .lede{
-    max-width:var(--measure);
-    margin:30px 0 0;
-    font-size:1.075rem;
-    color:var(--mid);
-    font-weight:400;
-    line-height:1.7;
-  }
-  .lede strong{color:var(--ink);font-weight:500}
+  .stance{font-size:clamp(1.15rem,2.4vw,1.45rem);line-height:1.5;max-width:36ch;margin:0 0 1.75rem}
+  .discipline{display:flex;flex-wrap:wrap;font-family:"Archivo",sans-serif;font-size:.88rem;color:var(--ink-soft)}
+  .discipline li{padding:0 .9rem;border-left:1px solid var(--rule)}
+  .discipline li:first-child{padding-left:0;border-left:0}
 
-  /* ---------- timeline ---------- */
-  .timeline{margin:82px 0 0;position:relative}
-  .timeline-hint{
-    font-size:12.5px;color:var(--faint);font-weight:500;margin:0 0 18px;
-  }
-  .segments{
-    display:grid;
-    grid-template-columns:11fr 9fr 3.2fr 2.6fr;
-    gap:0;
-  }
-  .seg{position:relative;padding-right:28px}
-  .seg:last-child{padding-right:0}
+  /* ---------- career rail ---------- */
+  .rail{padding:1rem 0 clamp(3rem,7vw,5rem)}
+  .rail-line{height:1px;background:var(--rule);transform-origin:left center;animation:draw 1s cubic-bezier(.2,.7,.3,1) both}
+  .eras{display:grid;grid-template-columns:repeat(7,1fr);gap:0}
+  .era{padding:1.1rem .9rem 0 0;position:relative;animation:lift .7s ease both;animation-delay:calc(.4s + var(--i) * .09s)}
+  .era::before{content:"";position:absolute;top:0;left:0;width:1px;height:13px;background:var(--ink)}
+  .era.now::before{height:20px;width:2px;background:var(--plan)}
+  .era .years{font-family:"Archivo",sans-serif;font-size:.76rem;color:var(--ink-soft);display:block;margin-bottom:.25rem}
+  .era .org{font-family:"Archivo",sans-serif;font-weight:600;font-size:.92rem;display:block;line-height:1.25;letter-spacing:-.01em}
+  .era.now .org{color:var(--plan)}
+  .era .role{font-size:.85rem;color:var(--ink-soft);display:block;line-height:1.35;margin-top:.25rem}
 
-  .seg .tick{
-    display:block;font-size:12px;font-weight:500;color:var(--faint);
-    letter-spacing:.02em;margin:0 0 9px;
-  }
-  /* the axis: each segment contributes its own piece, forming one continuous line */
-  .seg .bar{
-    position:relative;height:2px;background:var(--ink);opacity:.13;
-    transform:scaleX(0);transform-origin:left center;
-    animation:draw .7s cubic-bezier(.22,.72,.3,1) forwards;
-  }
-  .seg:nth-child(1) .bar{animation-delay:.12s}
-  .seg:nth-child(2) .bar{animation-delay:.40s}
-  .seg:nth-child(3) .bar{animation-delay:.68s}
-  .seg:nth-child(4) .bar{animation-delay:.96s;background:var(--signal);opacity:1}
-  @keyframes draw{to{transform:scaleX(1)}}
-
-  .seg .bar::before{  /* node */
-    content:"";position:absolute;left:0;top:50%;
-    width:9px;height:9px;border-radius:50%;
-    background:var(--bg);border:2px solid var(--ink);
-    transform:translate(-1px,-50%);
-    transition:border-color .18s ease,background .18s ease;
-  }
-  .seg:nth-child(4) .bar::before{border-color:var(--signal)}
-  .seg:last-child .bar::after{  /* open end marker for "now" */
-    content:"";position:absolute;right:0;top:50%;
-    width:7px;height:7px;border-radius:50%;
-    background:var(--signal);transform:translateY(-50%);
-  }
-
-  .node-btn{
-    appearance:none;background:none;border:0;padding:14px 0 0;margin:0;
-    font:inherit;text-align:left;color:inherit;cursor:pointer;display:block;width:100%;
-  }
-  .node-btn .what{
-    font-size:1.02rem;font-weight:600;letter-spacing:-0.02em;
-    transition:color .18s ease;
-  }
-  .seg:nth-child(4) .node-btn .what{color:var(--signal)}
-  .node-btn .more{
-    display:block;font-size:12.5px;color:var(--faint);font-weight:500;margin-top:4px;
-    transition:color .18s ease;
-  }
-  .seg:hover .node-btn .what,
-  .seg.open .node-btn .what{color:var(--signal)}
-  .seg:hover .node-btn .more,
-  .seg.open .node-btn .more{color:var(--signal)}
-  .seg:hover .bar,
-  .seg.open .bar{opacity:.34}
-  .seg:nth-child(4):hover .bar,
-  .seg:nth-child(4).open .bar{opacity:1}
-  .seg:hover .bar::before,
-  .seg.open .bar::before{background:var(--signal);border-color:var(--signal)}
-  .node-btn:focus-visible{outline:1.5px solid var(--signal);outline-offset:5px;border-radius:3px}
-
-  /* popover */
-  .pop{
-    position:absolute;top:calc(100% + 14px);left:0;z-index:30;
-    width:300px;max-width:78vw;
-    background:var(--bg);
-    border:1px solid var(--line);
-    border-radius:10px;
-    box-shadow:0 1px 2px rgba(15,30,46,.04),0 12px 32px rgba(15,30,46,.09);
-    padding:18px 20px 20px;
-    opacity:0;visibility:hidden;transform:translateY(-5px);
-    transition:opacity .18s ease,transform .18s ease,visibility .18s;
-  }
-  .seg:nth-child(3) .pop,
-  .seg:nth-child(4) .pop{left:auto;right:0}
-  .seg:hover .pop,
-  .seg:focus-within .pop,
-  .seg.open .pop{opacity:1;visibility:visible;transform:translateY(0)}
-  .pop h3{font-size:.98rem;margin:0 0 3px}
-  .pop .yrs{display:block;font-size:12px;color:var(--faint);font-weight:500;margin:0 0 10px}
-  .pop p{margin:0;font-size:.92rem;color:var(--mid);line-height:1.6}
-  .pop .orgs{
-    margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line-soft);
-    font-size:12.5px;color:var(--faint);font-weight:500;
-  }
-  .pop .close{display:none}
-  .scrim{
-    position:fixed;inset:0;background:rgba(15,30,46,.38);
-    opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s;
-    z-index:25;
-  }
-  .scrim.on{opacity:1;visibility:visible}
-
-  /* ---------- range ---------- */
-  .range{
-    margin:104px 0 0;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:44px;
-  }
-  .range h2{font-size:1.02rem;line-height:1.35;margin:0 0 10px;max-width:22ch}
-  .range p{margin:0;font-size:.93rem;color:var(--mid);line-height:1.62}
+  @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes lift{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
   /* ---------- sections ---------- */
-  section{padding:120px 0 0}
-  .sec-head{font-size:.82rem;font-weight:600;color:var(--faint);letter-spacing:.04em}
-  .sec-note{max-width:var(--measure);margin:14px 0 44px;color:var(--mid);font-size:1.02rem}
+  section{border-top:1px solid var(--rule);padding:clamp(2.5rem,6vw,4rem) 0}
+  .cols{display:grid;grid-template-columns:200px 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+  .cols h2{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:-.01em;margin:0;line-height:1.3}
+  .cols h2 + .note{font-size:.9rem;color:var(--ink-soft);margin:.5rem 0 0;max-width:24ch}
 
-  /* ---------- record ---------- */
-  .row{
-    display:grid;grid-template-columns:170px 1fr;gap:6px 36px;
-    padding:30px 0;border-top:1px solid var(--line-soft);
-  }
-  .row:first-of-type{border-top:1px solid var(--line)}
-  .row .when{font-size:13px;font-weight:500;color:var(--faint);padding-top:5px}
-  .row .org{font-size:1.03rem;font-weight:600;margin:0 0 3px}
-  .row .role{margin:0 0 10px;font-size:.9rem;color:var(--faint);font-weight:500}
-  .row p.detail{margin:0;max-width:var(--measure);color:var(--mid);font-size:.96rem}
+  /* ---------- programs ---------- */
+  .program{padding:0 0 2rem;margin:0 0 2rem;border-bottom:1px solid var(--rule)}
+  .program:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+  .program h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.4rem;letter-spacing:-.015em;margin:0 0 .15rem;line-height:1.2}
+  .program .where{font-family:"Archivo",sans-serif;font-size:.85rem;color:var(--ink-soft);display:block;margin-bottom:.9rem}
+  .headline{font-family:"Archivo",sans-serif;font-weight:500;font-size:1.05rem;line-height:1.45;margin:0 0 .85rem;max-width:48ch}
+  .scope{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin-top:.9rem;font-size:.9rem;color:var(--ink-soft)}
+  .scope li{padding-left:.9rem;border-left:1px solid var(--rule)}
 
   /* ---------- builds ---------- */
-  .build{
-    display:grid;grid-template-columns:1fr auto;gap:8px 36px;align-items:start;
-    padding:30px 0;border-top:1px solid var(--line-soft);
-  }
-  .build:first-of-type{border-top:1px solid var(--line)}
-  .build h3{font-size:1.03rem;margin:0 0 6px}
-  .build p{margin:0;max-width:var(--measure);color:var(--mid);font-size:.96rem}
-  .build .links{
-    display:flex;gap:20px;white-space:nowrap;padding-top:4px;
-    font-size:13.5px;font-weight:500;color:var(--faint);
-  }
+  .build{padding:1.4rem 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:.5rem 1.5rem;align-items:baseline}
+  .build:first-child{padding-top:0}
+  .build:last-child{border-bottom:0;padding-bottom:0}
+  .build h3{font-family:var(--mono);font-weight:500;font-size:1.02rem;margin:0;grid-column:1}
+  .build h3 a{border-bottom-color:rgba(29,78,107,.25)}
+  .state{grid-column:2;grid-row:1;font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--ink-soft);white-space:nowrap;display:flex;align-items:center;gap:.45rem}
+  .state::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--watch)}
+  .state.live::before{background:var(--go)}
+  .build p{grid-column:1 / -1;margin:.35rem 0 0;font-size:.98rem;max-width:60ch}
+  .build .links{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:1.1rem;margin-top:.6rem;font-family:"Archivo",sans-serif;font-size:.85rem}
 
-  /* ---------- footer ---------- */
-  footer{
-    margin-top:120px;padding:34px 0 72px;border-top:1px solid var(--line);
-    display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;align-items:baseline;
-    font-size:14.5px;color:var(--mid);
-  }
-  footer .who{font-weight:600;color:var(--ink)}
-  footer .ways{display:flex;flex-wrap:wrap;gap:24px}
+  /* ---------- chronology ---------- */
+  .job{display:grid;grid-template-columns:170px 1fr;gap:.25rem 1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+  .job:first-child{padding-top:0}
+  .job:last-child{border-bottom:0;padding-bottom:0}
+  .job .when{font-family:"Archivo",sans-serif;font-size:.85rem;color:var(--ink-soft);line-height:1.45}
+  .job .when span{display:block}
+  .job h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:1.08rem;margin:0 0 .1rem;line-height:1.3;letter-spacing:-.01em}
+  .job .title{font-size:.98rem;color:var(--ink-soft);margin:0 0 .5rem;display:block}
+  .job p{margin:0;font-size:.98rem}
 
-  @media (max-width:860px){
-    .segments{grid-template-columns:1fr 1fr;gap:30px 24px}
-    .seg{padding-right:0}
-    .seg:nth-child(3) .pop{left:0;right:auto}
-    .range{grid-template-columns:1fr;gap:34px}
-    .range h2{max-width:none}
-    .row{grid-template-columns:1fr;gap:4px}
-    .row .when{padding-top:0}
+  /* ---------- toolkit ---------- */
+  .kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.75rem}
+  .kit h3{font-family:"Archivo",sans-serif;font-weight:600;font-size:.9rem;margin:0 0 .5rem;color:var(--plan)}
+  .kit li{font-size:.97rem;line-height:1.55;color:var(--ink-soft)}
+  .kit li strong{color:var(--ink);font-weight:400}
+
+  /* ---------- credentials + contact ---------- */
+  .creds li{padding:.55rem 0;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:1rem;font-size:.97rem}
+  .creds li:last-child{border-bottom:0}
+  .creds .qual{font-family:"Archivo",sans-serif;font-size:.85rem;color:var(--ink-soft)}
+
+  .contact{background:var(--panel);border-top:1px solid var(--rule)}
+  .contact .cols{padding:clamp(2.5rem,6vw,4rem) 0}
+  .contact-links{display:flex;flex-wrap:wrap;gap:.6rem 2rem;font-family:"Archivo",sans-serif;font-size:1rem;margin-top:.5rem}
+  footer{padding:1.75rem 0 3rem;font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--ink-soft);background:var(--panel)}
+
+  @media (max-width:980px){
+    .eras{grid-template-columns:repeat(4,1fr)}
+    .era{padding-bottom:1.25rem}
+  }
+  @media (max-width:820px){
+    .cols{grid-template-columns:1fr;gap:1.25rem}
+    .eras{grid-template-columns:1fr;gap:0}
+    .era{padding:1rem 0 1rem 1.1rem}
+    .era::before{top:1rem;height:calc(100% - 1rem)}
+    .era.now::before{height:calc(100% - 1rem)}
+    .rail-line{display:none}
     .build{grid-template-columns:1fr}
-    .build .links{padding-top:12px}
-    .hero{padding-top:72px}
-    section{padding-top:92px}
+    .state{grid-column:1;grid-row:auto}
+    .job{grid-template-columns:1fr;gap:.35rem}
+    .job .when span{display:inline}
+    .job .when span + span::before{content:" · "}
   }
-
-  /* touch / small screens: the popover becomes a modal sheet */
-  @media (max-width:640px){
-    .wrap{padding:0 22px}
-    .segments{grid-template-columns:1fr;gap:26px}
-    .seg:hover .pop,
-    .seg:focus-within .pop{opacity:0;visibility:hidden}
-    .pop{
-      position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;max-width:none;
-      border-radius:14px 14px 0 0;border-bottom:none;
-      padding:26px 24px calc(26px + env(safe-area-inset-bottom));
-      transform:translateY(14px);
-    }
-    .seg.open .pop{opacity:1;visibility:visible;transform:translateY(0)}
-    .pop .close{
-      display:block;appearance:none;background:none;border:0;font:inherit;cursor:pointer;
-      margin:18px 0 0;padding:0;font-size:14px;font-weight:600;color:var(--signal);
-    }
-  }
-
   @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
     html{scroll-behavior:auto}
-    .seg .bar{animation:none;transform:scaleX(1)}
-    .pop,.scrim,.node-btn .what,.node-btn .more,.seg .bar{transition:none}
   }
 </style>
 </head>
 <body>
-<div class="scrim" data-scrim hidden></div>
-<div class="wrap">
 
+<div class="wrap">
   <header class="masthead">
-    <div class="wordmark">Justin Polomcean</div>
+    <a class="mark" href="#">Justin Polomcean</a>
     <nav>
-      <a href="#record">Track record</a>
-      <a href="#builds">What I build</a>
+      <a href="#programs">Programs</a>
+      <a href="#builds">Builds</a>
+      <a href="#history">History</a>
+      <a href="#toolkit">Toolkit</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <div class="hero">
-    <h1>Between the code, the customer, and the calendar.</h1>
-    <p class="lede">
-      Product delivery leader, <strong>17+ years</strong> turning what customers need into
-      product that ships. I built the CMS content models behind 30+ Hearst properties and 145M
-      monthly visitors, led agile delivery across a 100+ brand portfolio, and most recently owned
-      the roadmap for web, mobile, and personalization on JPMorgan Chase's global Employee
-      Experience platforms. My job is the whole line — the customer problem, the architecture that
-      solves it, and the date it lands.
-    </p>
+    <h1>I ship software<br>inside the rules.</h1>
+    <p class="stance">Delivery leadership in regulated environments — banking, life insurance, healthcare compliance, publisher privacy — and the AI tooling that takes the manual work out of them.</p>
+    <ul class="discipline">
+      <li>Technical program management</li>
+      <li>Product delivery</li>
+      <li>Project leadership</li>
+    </ul>
+  </div>
 
-    <div class="timeline">
-      <p class="timeline-hint">Twenty-two years, four phases. Open one.</p>
-      <div class="segments">
-
-        <div class="seg">
-          <span class="tick">2004</span>
-          <div class="bar"></div>
-          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-1">
-            <span class="what">Writing the code</span>
-            <span class="more">2004 – 2015</span>
-          </button>
-          <div class="pop" id="phase-1" role="dialog" aria-modal="false" aria-label="Writing the code, 2004 to 2015">
-            <h3>Writing the code</h3>
-            <span class="yrs">2004 – 2015</span>
-            <p>Front-end engineer and digital project manager. Built the CMS content types editors
-              used to publish, and hand-coded the components rendered to 145M monthly visitors
-              across 30+ properties.</p>
-            <div class="orgs">Defy Media · Hearst Digital Media</div>
-            <button class="close" type="button" data-close>Close</button>
-          </div>
-        </div>
-
-        <div class="seg">
-          <span class="tick">2015</span>
-          <div class="bar"></div>
-          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-2">
-            <span class="what">Running the teams</span>
-            <span class="more">2015 – 2024</span>
-          </button>
-          <div class="pop" id="phase-2" role="dialog" aria-modal="false" aria-label="Running the teams, 2015 to 2024">
-            <h3>Running the teams</h3>
-            <span class="yrs">2015 – 2024</span>
-            <p>Agile and scrum leadership across 100+ brands and 60 sites. Launched a global consent
-              framework across 40+ international sites in 14 weeks, and standardized CMS content
-              types and taxonomy for search and ad categorization.</p>
-            <div class="orgs">LiveIntent · Hearst Magazines</div>
-            <button class="close" type="button" data-close>Close</button>
-          </div>
-        </div>
-
-        <div class="seg">
-          <span class="tick">2024</span>
-          <div class="bar"></div>
-          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-3">
-            <span class="what">Owning delivery</span>
-            <span class="more">2024 – 2026</span>
-          </button>
-          <div class="pop" id="phase-3" role="dialog" aria-modal="false" aria-label="Owning delivery, 2024 to 2026">
-            <h3>Owning delivery</h3>
-            <span class="yrs">2024 – 2026</span>
-            <p>VP-level product delivery for web, mobile, and personalization. Feature-flag and
-              API-driven targeting by region, building, and user, and a tag-based agentic benefits
-              platform that answered the question instead of returning a search page.</p>
-            <div class="orgs">JPMorgan Chase</div>
-            <button class="close" type="button" data-close>Close</button>
-          </div>
-        </div>
-
-        <div class="seg">
-          <span class="tick">2026</span>
-          <div class="bar"></div>
-          <button class="node-btn" type="button" aria-expanded="false" aria-controls="phase-4">
-            <span class="what">Building with AI</span>
-            <span class="more">2026 – now</span>
-          </button>
-          <div class="pop" id="phase-4" role="dialog" aria-modal="false" aria-label="Building with AI, 2026 to now">
-            <h3>Building with AI</h3>
-            <span class="yrs">2026 – now</span>
-            <p>RAG knowledge bases, LLM extraction pipelines, and agentic retrieval in regulated
-              environments — alongside a 16-feature program increment on a policyholder
-              self-service platform.</p>
-            <div class="orgs">Insight Ally · Capgemini</div>
-            <button class="close" type="button" data-close>Close</button>
-          </div>
-        </div>
-
+  <div class="rail">
+    <div class="rail-line"></div>
+    <div class="eras">
+      <div class="era" style="--i:0">
+        <span class="years">2004 – 2006</span>
+        <span class="org">Defy Media</span>
+        <span class="role">Digital project manager</span>
       </div>
-    </div>
-
-    <div class="range">
-      <div>
-        <h2>Technical enough to hold the architecture conversation</h2>
-        <p>Nine years hand-coding the front end before I ever ran a standup. I can read the pull
-          request, not just the burndown.</p>
+      <div class="era" style="--i:1">
+        <span class="years">2006 – 2015</span>
+        <span class="org">Hearst Magazines</span>
+        <span class="role">Front-end engineer</span>
       </div>
-      <div>
-        <h2>Grounded enough to keep it about the customer</h2>
-        <p>The conversation stays on what the customer actually needs, and on working product in
-          their hands over plans that look good on a slide.</p>
+      <div class="era" style="--i:2">
+        <span class="years">2015 – 2017</span>
+        <span class="org">LiveIntent</span>
+        <span class="role">Agile project manager</span>
       </div>
-      <div>
-        <h2>Disciplined enough to keep dates credible</h2>
-        <p>Four teams, ~120 people, a dozen dependent teams, and a mobile release cadence cut from
-          twice quarterly to monthly.</p>
+      <div class="era" style="--i:3">
+        <span class="years">2017 – 2024</span>
+        <span class="org">Hearst Magazines</span>
+        <span class="role">Scrum master</span>
+      </div>
+      <div class="era" style="--i:4">
+        <span class="years">2024 – 2026</span>
+        <span class="org">JPMorgan Chase</span>
+        <span class="role">Product delivery manager</span>
+      </div>
+      <div class="era" style="--i:5">
+        <span class="years">2026</span>
+        <span class="org">Insight Ally</span>
+        <span class="role">AI program manager</span>
+      </div>
+      <div class="era now" style="--i:6">
+        <span class="years">2026 – present</span>
+        <span class="org">Capgemini</span>
+        <span class="role">Consultant manager, technical scrum leader</span>
       </div>
     </div>
   </div>
-
-  <section id="record">
-    <h2 class="sec-head">Track record</h2>
-    <p class="sec-note">Financial services, media, and technology — consistently in regulated
-      environments where the release has to be right the first time.</p>
-
-    <div class="row">
-      <div class="when">Jul 2026 – now</div>
-      <div>
-        <div class="org">Capgemini — client: New York Life</div>
-        <p class="role">Consultant Manager, Technical Scrum Leader</p>
-        <p class="detail">Own a 16-feature program increment across two scrum teams on MyNYL, the
-          policyholder self-service platform, leading the payments redesign track and shifting
-          transactions that used to require a phone call into digital self-service.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="when">Apr – Jul 2026</div>
-      <div>
-        <div class="org">Insight Ally</div>
-        <p class="role">AI Program Manager (consultant)</p>
-        <p class="detail">Built a RAG knowledge base over dense Medicare regulation and an LLM
-          extraction pipeline covering 20+ structured fields, plus the adversarial test sets and
-          answer keys used to prove the accuracy before anyone trusted it.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="when">Jun 2024 – Jan 2026</div>
-      <div>
-        <div class="org">JPMorgan Chase</div>
-        <p class="role">Product Delivery Manager, Vice President — Employee Experience Platforms</p>
-        <p class="detail">Delivery and agility lead for web, mobile, and personalization.
-          Feature-flag and API-driven targeting by region, building, and user; a tag-based agentic
-          benefits platform that answered the question instead of returning a search page; ~60
-          engineers, designers, and researchers plus a dozen dependent teams.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="when">Aug 2017 – Jan 2024</div>
-      <div>
-        <div class="org">Hearst Magazines</div>
-        <p class="role">Scrum Master — Product, Engineering, Design</p>
-        <p class="detail">Agility across 100+ brands and 60 sites. Launched a consent management
-          framework across 40+ international sites in 14 weeks, a week ahead of deadline, and
-          standardized CMS content types and taxonomy for search and ad categorization.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="when">Aug 2015 – Jan 2017</div>
-      <div>
-        <div class="org">LiveIntent</div>
-        <p class="role">Agile Project Manager — Product, Engineering, Design</p>
-        <p class="detail">Delivery and Jira administration for ~60 people across six teams,
-          supporting email marketing and audience targeting products for digital advertisers.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="when">Aug 2006 – May 2015</div>
-      <div>
-        <div class="org">Hearst Magazines</div>
-        <p class="role">Front-End Engineer — Hearst Digital Media</p>
-        <p class="detail">Built the CMS content types editors used to publish articles and galleries,
-          and hand-coded the components rendered to 145M monthly visitors across 30+ properties.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="when">2004 – 2006</div>
-      <div>
-        <div class="org">Defy Media</div>
-        <p class="role">Digital Project Manager</p>
-        <p class="detail">Campaign and product delivery for clients including Verizon, Coca-Cola,
-          Paramount, Sony, and Procter &amp; Gamble.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="builds">
-    <h2 class="sec-head">What I build</h2>
-    <p class="sec-note">Working software, not slideware. Everything here is mine, runs on synthetic
-      or personal data, and is public.</p>
-
-    <div class="build">
-      <div>
-        <h3>clause-to-rule</h3>
-        <p>Drafts compliance rules from investment mandate documents with a human review gate before
-          anything is accepted. Runs on synthetic mandates.</p>
-      </div>
-      <div class="links"><a href="https://github.com/jpolomcean1228/clause-to-rule">Repo</a></div>
-    </div>
-
-    <div class="build">
-      <div>
-        <h3>Get Time Back</h3>
-        <p>Personal productivity agent taken from idea to live prototype: FastAPI backend, Google
-          Calendar read and write, Gmail draft execution, and household coordination.</p>
-      </div>
-      <div class="links">
-        <a href="https://get-time-back.onrender.com">Live</a>
-        <a href="https://github.com/jpolomcean1228/get-time-back">Repo</a>
-      </div>
-    </div>
-
-    <div class="build">
-      <div>
-        <h3>PM Calendar Assistant</h3>
-        <p>Turns a project manager's calendar into something that can be reasoned about — the
-          meetings, the load, and what the week actually costs.</p>
-      </div>
-      <div class="links"><a href="https://github.com/jpolomcean1228/pm-calendar-assistant">Repo</a></div>
-    </div>
-
-    <div class="build">
-      <div>
-        <h3>Who's Your Handcuff?</h3>
-        <p>Fantasy football signal aggregator. Pulls injuries, depth-chart moves, home and away, and
-          stadium weather, then writes the story — so you know who to start when a starter goes down.</p>
-      </div>
-      <div class="links"><a href="https://github.com/jpolomcean1228/handcuff">Repo</a></div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div class="who">Justin Polomcean — Suffern, NY</div>
-    <div class="ways">
-      <a href="mailto:jpolomcean0712@gmail.com">jpolomcean0712@gmail.com</a>
-      <a href="https://www.linkedin.com/in/justin-polomcean-3244902">LinkedIn</a>
-      <a href="https://github.com/jpolomcean1228">GitHub</a>
-    </div>
-  </footer>
-
 </div>
 
-<script>
-(function(){
-  var segs  = Array.prototype.slice.call(document.querySelectorAll('.seg'));
-  var scrim = document.querySelector('[data-scrim]');
-  var sheet = window.matchMedia('(max-width: 640px)');
+<section id="programs">
+  <div class="wrap cols">
+    <div>
+      <h2>Programs I've run</h2>
+      <p class="note">Four that show the range: a multi-team program increment, a platform operating model, a regulatory deadline, and AI systems in production.</p>
+    </div>
+    <div>
 
-  function closeAll(refocus){
-    segs.forEach(function(seg){
-      if(!seg.classList.contains('open')) return;
-      seg.classList.remove('open');
-      seg.querySelector('.node-btn').setAttribute('aria-expanded','false');
-      if(refocus) seg.querySelector('.node-btn').focus();
-    });
-    scrim.classList.remove('on');
-    scrim.hidden = true;
-    document.body.classList.remove('locked');
-  }
+      <article class="program">
+        <h3>MyNYL payments redesign</h3>
+        <span class="where">Capgemini, client New York Life — 2026 to present</span>
+        <p class="headline">A sixteen-feature program increment across five sprints and two scrum teams, with money movement in scope and committed release dates that held.</p>
+        <p>I own discovery, requirements, backlog and prioritization on New York Life's policyholder self-service platform, and lead the payments redesign end to end — mode-change conversion, one-time payment redesign, and refreshed interface standards across one-time payment, loan repayment, and universal and term life products, sequenced across three consecutive sprints. Weekly reporting publishes red-amber-green health on scope, schedule and resources alongside epic-level development and QA completion, so gaps surface mid-sprint instead of at release cutover.</p>
+        <p>I own the RAID log across both teams and escalate what the teams can't clear themselves: unstable downstream integrations halting test closure, thin test data in the model environment, pending risk-team approval. The fix is usually redirecting testing to an alternate environment and reallocating capacity, not moving the date. Alongside delivery I drove eligibility rule reductions on payments and surrenders, cutting policyholder-facing restrictions on transactions that previously routed to manual handling.</p>
+        <ul class="scope">
+          <li>Payments redesign</li>
+          <li>Add bank</li>
+          <li>Surrenders</li>
+          <li>Agent-facing tooling</li>
+          <li>Chat API dependencies</li>
+          <li>Release-to-epic traceability</li>
+        </ul>
+      </article>
 
-  function open(seg){
-    closeAll(false);
-    seg.classList.add('open');
-    seg.querySelector('.node-btn').setAttribute('aria-expanded','true');
-    if(sheet.matches){
-      scrim.hidden = false;
-      requestAnimationFrame(function(){ scrim.classList.add('on'); });
-      document.body.classList.add('locked');
-    }
-  }
+      <article class="program">
+        <h3>Employee Experience platforms</h3>
+        <span class="where">JPMorgan Chase — 2024 to 2026</span>
+        <p class="headline">Release cycles cut from twice a quarter to monthly across roughly 60 engineers, designers and researchers.</p>
+        <p>I co-led the shift of the product operating model to Jobs To Be Done — solution charters for feature alignment, service blueprint prioritization for ranking, and a release calendar carrying dependencies, risk and live status. The cadence change came from pairing rigorous product acceptance standards with tighter CI/CD, not from asking teams to go faster.</p>
+        <p>Scope covered the intranet and a dual-platform mobile app, including global release cycles, phased rollouts and app store review risk, plus integration contracts with content delivery in Adobe Experience Manager, international events, corporate real estate booking, and third-party badge and dining vendors. As agility lead for web, mobile and personalization I delivered feature-flag and API-driven personalization through Split.io by region, building and user. The build I'd point to first: a tag-based agentic benefits content platform, with benefits content structured at the source so an AI agent surfaces the right answer in context rather than handing an employee a search box.</p>
+        <ul class="scope">
+          <li>Jobs To Be Done operating model</li>
+          <li>iOS and Android releases</li>
+          <li>Split.io personalization</li>
+          <li>WCAG in the Definition of Done</li>
+          <li>Product Council and steering forums</li>
+        </ul>
+      </article>
 
-  segs.forEach(function(seg){
-    var btn = seg.querySelector('.node-btn');
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      seg.classList.contains('open') ? closeAll(false) : open(seg);
-    });
-    var close = seg.querySelector('[data-close]');
-    if(close) close.addEventListener('click', function(e){
-      e.stopPropagation();
-      closeAll(true);
-    });
-    seg.querySelector('.pop').addEventListener('click', function(e){ e.stopPropagation(); });
-  });
+      <article class="program">
+        <h3>Global consent management framework</h3>
+        <span class="where">Hearst Magazines — 2017 to 2024</span>
+        <p class="headline">GDPR, CCPA and GPP consent shipped to 40+ international sites in fourteen weeks, a week ahead of the deadline.</p>
+        <p>A hard regulatory date, dozens of editorial teams, and advertising revenue exposed if consent broke — the launch improved monetization by diversifying consent capabilities rather than just satisfying the rule. It followed two years of work with OneTrust to build the framework in the first place.</p>
+        <p>The surrounding job was agile ceremonies and release planning across a division of 100+ brands and 60 websites: automated Steering Committee intake in Airtable, a tiered release schedule giving roughly 50 engineering leads GitHub, Travis CI and Datadog access through a Slack DevOps helper, and the transition of 120 staff into operational tracks spanning monetization, marketing, data, payments, subscription and content. I was the organization's Jira administrator across all media platforms and built the first feature planning template in Miro.</p>
+        <ul class="scope">
+          <li>OneTrust</li>
+          <li>40+ sites in 14 weeks</li>
+          <li>100+ brands</li>
+          <li>Airtable intake</li>
+          <li>Feature-driven transition</li>
+        </ul>
+      </article>
 
-  scrim.addEventListener('click', function(){ closeAll(false); });
-  document.addEventListener('click', function(){ closeAll(false); });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAll(true);
-  });
-  sheet.addEventListener('change', function(){ closeAll(false); });
-})();
-</script>
+      <article class="program">
+        <h3>ADR Connect and R2 Case Management</h3>
+        <span class="where">Insight Ally — 2026</span>
+        <p class="headline">Two AI-assisted healthcare compliance platforms delivered with a distributed team spanning five specialties.</p>
+        <p>I owned requirements and prioritization across technical lead, UI and development, RPA and clinical subject-matter roles. The extraction pipeline reads Medicare Additional Documentation Request letters across 20+ structured fields; I wrote adversarial test documents and answer keys to find its failure modes before release rather than after. The retrieval-augmented knowledge base turns dense Skilled Nursing Facility Medicare regulation into a queryable reference, cutting reviewer research time per case.</p>
+        <p>I also authored the automation specifications for ADR documentation packages targeting PointClickCare in Playwright and NetHealth in Power Automate Desktop, and set the engagement's operating cadence — meeting-transcript action items extracted into structured templates and one consolidated tracker, so a small distributed team had a single source of truth.</p>
+        <ul class="scope">
+          <li>LLM extraction pipeline</li>
+          <li>Adversarial test generation</li>
+          <li>RAG knowledge base</li>
+          <li>Playwright and Power Automate specs</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="builds">
+  <div class="wrap cols">
+    <div>
+      <h2>Things I've built</h2>
+      <p class="note">Public repositories. Prototypes run on synthetic data — no client or employer material.</p>
+    </div>
+    <div>
+
+      <article class="build">
+        <h3><a href="https://github.com/jpolomcean1228/clause-to-rule">clause-to-rule</a></h3>
+        <span class="state live">live</span>
+        <p>Drafts compliance rules from investment mandate documents and holds them at a human review gate before anything is accepted. Built as a proof point for client onboarding in asset and wealth management, where roughly two thirds of the work is standardizable and the rest is genuinely bespoke. Runs on synthetic mandates.</p>
+        <div class="links">
+          <a href="https://github.com/jpolomcean1228/clause-to-rule">Repository</a>
+          <a href="https://jpolomcean1228.github.io/clause-to-rule/">Live demo</a>
+        </div>
+      </article>
+
+      <article class="build">
+        <h3><a href="https://github.com/jpolomcean1228/get-time-back">get-time-back</a></h3>
+        <span class="state live">live</span>
+        <p>A productivity agent taken from idea to a working multi-phase prototype: FastAPI backend, Google Calendar read and write, Gmail draft execution, multi-user household coordination, and a planner that schedules against stated values rather than just open slots. Deployed with a real agent behind it.</p>
+        <div class="links">
+          <a href="https://github.com/jpolomcean1228/get-time-back">Repository</a>
+          <a href="https://get-time-back.onrender.com">Live app</a>
+          <a href="https://jpolomcean1228.github.io/get-time-back/">Static demo</a>
+        </div>
+      </article>
+
+      <article class="build">
+        <h3><a href="https://github.com/jpolomcean1228/pm-calendar-assistant">pm-calendar-assistant</a></h3>
+        <span class="state">prototype</span>
+        <p><!-- EDIT: replace with one honest line — what it does and who it's for -->A calendar assistant for delivery managers, turning a week of meetings into the shape of the work actually in flight.</p>
+        <div class="links">
+          <a href="https://github.com/jpolomcean1228/pm-calendar-assistant">Repository</a>
+        </div>
+      </article>
+
+      <article class="build">
+        <h3><a href="https://github.com/jpolomcean1228/adr-suite">adr-suite</a></h3>
+        <span class="state live">live</span>
+        <p><!-- EDIT: confirm scope before publishing -->Tooling for Medicare additional documentation request packages: letter extraction, field validation, and the automation specifications behind the document pull.</p>
+        <div class="links">
+          <a href="https://github.com/jpolomcean1228/adr-suite">Repository</a>
+          <a href="https://jpolomcean1228.github.io/adr-suite/">Live demo</a>
+        </div>
+      </article>
+
+      <!-- Uncomment once "Who's Your Handcuff?" is public
+      <article class="build">
+        <h3><a href="https://github.com/jpolomcean1228/handcuff">handcuff</a></h3>
+        <span class="state">prototype</span>
+        <p>"Who's Your Handcuff?" — aggregates player news, depth-chart moves, home and away splits and stadium weather, then writes the article. Love the players, not just the game.</p>
+        <div class="links">
+          <a href="https://github.com/jpolomcean1228/handcuff">Repository</a>
+        </div>
+      </article>
+      -->
+
+    </div>
+  </div>
+</section>
+
+<section id="history">
+  <div class="wrap cols">
+    <div>
+      <h2>Full history</h2>
+      <p class="note">Front-end engineering first, delivery leadership after. The engineering years are why the delivery conversations stay concrete.</p>
+    </div>
+    <div>
+
+      <article class="job">
+        <div class="when"><span>Jul 2026 – Present</span><span>Client: New York Life</span></div>
+        <div>
+          <h3>Capgemini</h3>
+          <span class="title">Consultant Manager / Technical Scrum Leader</span>
+          <p>Product discovery, requirements, backlog and feature prioritization for a sixteen-feature program increment across five sprints on MyNYL. Weekly reporting for two scrum teams, program RAID ownership, sprint demonstrations for Product Owner sign-off, and scope trade-offs negotiated with Product and Architecture as the backlog shifted.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><span>Apr 2026 – Jul 2026</span><span>Remote</span></div>
+        <div>
+          <h3>Insight Ally</h3>
+          <span class="title">AI Program Manager, consultant</span>
+          <p>Delivery of ADR Connect and R2 Case Management. LLM extraction across 20+ structured fields with adversarial validation, a RAG knowledge base for Skilled Nursing Facility Medicare compliance, RPA specifications for PointClickCare and NetHealth, and the engagement's documentation standards and operating cadence.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><span>Jun 2024 – Jan 2026</span><span>Jersey City, NJ</span></div>
+        <div>
+          <h3>JPMorgan Chase</h3>
+          <span class="title">Product Delivery Manager, Employee Experience Platforms</span>
+          <p>Co-led the move to a Jobs To Be Done operating model and coordinated roughly 60 engineers, designers and researchers plus interdependent external teams. Cut releases from twice quarterly to monthly, owned the intranet and dual-platform mobile app, served as agility lead for web, mobile and personalization, and put WCAG into the Definition of Done. Administered Jira, Jira Align and Confluence as the org's tooling standard.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><span>Aug 2017 – Jan 2024</span><span>New York, NY</span></div>
+        <div>
+          <h3>Hearst Magazines</h3>
+          <span class="title">Scrum Master, Product, Engineering and Design</span>
+          <p>Consent management across 40+ international sites in fourteen weeks with OneTrust, agile ceremonies and release planning across 100+ brands and 60 websites, automated Steering Committee intake in Airtable, a tiered release schedule for roughly 50 engineering leads, and the transition of 120 staff into operational tracks. Organizational Jira administrator.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><span>Aug 2015 – Jan 2017</span><span>New York, NY</span></div>
+        <div>
+          <h3>LiveIntent</h3>
+          <span class="title">Agile Project Manager, Product, Engineering and Design</span>
+          <p>Delivery and Jira administration for nearly 60 people across six teams, from kickoff through sprints, refinement, retrospectives and release. Drove adoption of Scrum, Kanban, Lean and Extreme Programming practices while supporting the launch of email marketing solutions for digital advertisers.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><span>Aug 2006 – May 2015</span><span>New York, NY</span></div>
+        <div>
+          <h3>Hearst Magazines</h3>
+          <span class="title">Front-End Engineer, Hearst Digital Media</span>
+          <p>Maintained the codebase behind 30+ sites reaching over 145 million monthly visitors. Built CMS content types so editors could publish articles and galleries, and the front-end components used across all published content. Contributed to launches spanning DevOps, product marketing, and advertising technology and monetization.</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="when"><span>2004 – 2006</span><span>New York, NY</span></div>
+        <div>
+          <h3>Defy Media</h3>
+          <span class="title">Digital Project Manager</span>
+          <p>Product development for media clients generating over $15M in annual advertising and campaign revenue, including Verizon, Coca-Cola, Paramount, Sony and Procter &amp; Gamble. Worked with nearly 50 clients on projects up to $5M, directing producers and campaign kickoffs, and served as liaison between in-house and external counsel on contest-based promotions.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="toolkit">
+  <div class="wrap cols">
+    <div>
+      <h2>How I work</h2>
+      <p class="note">Process only holds if the system of record actually reflects it.</p>
+    </div>
+    <div class="kit">
+      <div>
+        <h3>Delivery</h3>
+        <ul>
+          <li><strong>SAFe program increment planning</strong> across multi-room, multi-PO setups</li>
+          <li><strong>RAID and RAG reporting</strong> at feature level</li>
+          <li><strong>Story pointing rubrics</strong> teams actually hold to</li>
+          <li><strong>Dependency management</strong> at release-train scale</li>
+          <li><strong>Jobs To Be Done</strong> and service blueprint prioritization</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Systems of record</h3>
+        <ul>
+          <li>Jira, Jira Align, Confluence</li>
+          <li>Airtable, Smartsheet, Miro</li>
+          <li>Split.io, Adobe Experience Manager</li>
+          <li>OneTrust, Tableau</li>
+          <li>GitHub, Travis CI, Datadog</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Building</h3>
+        <ul>
+          <li>Python, FastAPI</li>
+          <li>Playwright, Power Automate Desktop</li>
+          <li>RAG pipelines, agentic workflows</li>
+          <li>LLM-as-judge evaluation</li>
+          <li>Front-end engineering foundation</li>
+          <li>SQL — Postgres and window functions, in progress</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap cols">
+    <div>
+      <h2>Credentials</h2>
+    </div>
+    <div>
+      <ul class="creds">
+        <li><span>Advanced Certified ScrumMaster (A-CSM)</span><span class="qual">Held</span></li>
+        <li><span>Certified ScrumMaster (CSM)</span><span class="qual">Held</span></li>
+        <li><span>SAFe 6.0</span><span class="qual">Held</span></li>
+        <li><span>Project Management Professional (PMP)</span><span class="qual">In progress</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <div class="wrap cols">
+    <div>
+      <h2>Get in touch</h2>
+    </div>
+    <div>
+      <p>I'm looking for a place to build something over years rather than quarters — technical program management, product operations, or delivery leadership where regulated complexity is the point rather than the obstacle.</p>
+      <div class="contact-links">
+        <a href="mailto:jpolomcean0712@gmail.com">jpolomcean0712@gmail.com</a>
+        <a href="https://www.linkedin.com/in/justin-polomcean-3244902">LinkedIn</a>
+        <a href="https://github.com/jpolomcean1228">GitHub</a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap">Suffern, New York</div>
+  </footer>
+</div>
+
 </body>
 </html>
