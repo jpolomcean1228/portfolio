@@ -166,6 +166,7 @@
     <a class="mark" href="#">Justin Polomcean</a>
     <nav>
       <a href="#programs">Programs</a>
+      <a href="#ai">AI work</a>
       <a href="#builds">Builds</a>
       <a href="#history">History</a>
       <a href="#toolkit">Toolkit</a>
@@ -244,7 +245,7 @@
           <li>Add bank</li>
           <li>Surrenders</li>
           <li>Agent-facing tooling</li>
-          <li>Chat API dependencies</li>
+          <li>Conversational chat API</li>
           <li>Release-to-epic traceability</li>
         </ul>
       </article>
@@ -254,11 +255,12 @@
         <span class="where">JPMorgan Chase — 2024 to 2026</span>
         <p class="headline">Release cycles cut from twice a quarter to monthly across roughly 60 engineers, designers and researchers.</p>
         <p>I co-led the shift of the product operating model to Jobs To Be Done — solution charters for feature alignment, service blueprint prioritization for ranking, and a release calendar carrying dependencies, risk and live status. The cadence change came from pairing rigorous product acceptance standards with tighter CI/CD, not from asking teams to go faster.</p>
-        <p>Scope covered the intranet and a dual-platform mobile app, including global release cycles, phased rollouts and app store review risk, plus integration contracts with content delivery in Adobe Experience Manager, international events, corporate real estate booking, and third-party badge and dining vendors. As agility lead for web, mobile and personalization I delivered feature-flag and API-driven personalization through Split.io by region, building and user. The build I'd point to first: a tag-based agentic benefits content platform, with benefits content structured at the source so an AI agent surfaces the right answer in context rather than handing an employee a search box.</p>
+        <p>Scope covered the intranet and a dual-platform mobile app, including global release cycles, phased rollouts and app store review risk, plus integration contracts with content delivery in Adobe Experience Manager, international events, corporate real estate booking, and third-party badge and dining vendors. As agility lead for web, mobile and personalization I delivered feature-flag and API-driven personalization through Split.io by region, building and user. The build I'd point to first is the tag-based agentic benefits content platform — a frictionless search experience where benefits content is structured at the source so an agent surfaces the right answer for the right employee in their own geo-locale, in three clicks or less. I pressure-tested the target outcomes and helped ship it.</p>
         <ul class="scope">
           <li>Jobs To Be Done operating model</li>
           <li>iOS and Android releases</li>
           <li>Split.io personalization</li>
+          <li>Agentic content platform</li>
           <li>WCAG in the Definition of Done</li>
           <li>Product Council and steering forums</li>
         </ul>
@@ -297,11 +299,66 @@
   </div>
 </section>
 
+<section id="ai">
+  <div class="wrap cols">
+    <div>
+      <h2>AI work</h2>
+      <p class="note">Three engagements where the model was load-bearing, not a demo.</p>
+    </div>
+    <div>
+
+      <article class="program">
+        <h3>Agentic benefits content</h3>
+        <span class="where">JPMorgan Chase — Employee Experience Platforms</span>
+        <p class="headline">The right content, for the right person, in their own geo-locale — in three clicks or less.</p>
+        <p>The problem wasn't that employees couldn't find benefits information. It was that finding it meant a search box, a results page, a PDF, and a guess about whether the policy applied to their country and their plan. The answer was to structure benefits content at the source with tags an agent could reason over, so the system could resolve a question in context and return the version that actually applies to the person asking, scoped to their location.</p>
+        <p>I pressure-tested the target outcomes and helped ship it — the design credit belongs to the team. What I owned was whether the outcome we were aiming at was the right one and whether the thing we shipped hit it: three clicks as a hard ceiling, geo-locale correctness as a pass condition, not a nice-to-have.</p>
+        <ul class="scope">
+          <li>Tag-based content model</li>
+          <li>Agentic retrieval</li>
+          <li>Geo-locale scoping</li>
+          <li>Frictionless search</li>
+        </ul>
+      </article>
+
+      <article class="program">
+        <h3>Extraction and retrieval for Medicare compliance</h3>
+        <span class="where">Insight Ally — ADR Connect and R2 Case Management</span>
+        <p class="headline">An extraction pipeline and a grounded regulatory knowledge base, both gated on evaluation rather than vibes.</p>
+        <p>The extraction side reads Medicare Additional Documentation Request letters across 20+ structured fields. Before release I wrote adversarial test documents with deliberate traps and a companion answer key, because the interesting question isn't whether a pipeline works on clean input — it's what it does when a date is ambiguous or a field is missing, and whether it says so or quietly invents one.</p>
+        <p>The retrieval side turns dense Skilled Nursing Facility Medicare regulation into a queryable reference with a question bank behind it, cutting reviewer research time per case. Alongside both, automation specifications for the document pull itself: PointClickCare in Playwright, NetHealth in Power Automate Desktop.</p>
+        <ul class="scope">
+          <li>LLM extraction, 20+ fields</li>
+          <li>Adversarial test generation</li>
+          <li>RAG over regulation</li>
+          <li>LLM-as-judge evaluation</li>
+        </ul>
+      </article>
+
+      <article class="program">
+        <h3>Conversational servicing on MyNYL</h3>
+        <span class="where">Capgemini, client New York Life</span>
+        <p class="headline">Chat capability on a policyholder self-service platform, sequenced against enterprise architecture dependencies.</p>
+        <!-- EDIT: replace this paragraph with the specifics you want public — what the chat capability does, what you owned, and what shipped -->
+        <p>Chat API development sits inside the program increment alongside payments and servicing. The delivery problem is the interesting one: a conversational surface on a platform that moves money has to clear enterprise architecture review before it clears a sprint, and the dependency has to be escalated early enough that the rest of the increment doesn't wait on it.</p>
+        <ul class="scope">
+          <li>Chat API</li>
+          <li>Enterprise architecture dependencies</li>
+          <li>Regulated conversational surface</li>
+        </ul>
+      </article>
+
+      <p style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule);color:var(--ink-soft);font-size:.97rem">How I approach it: the model is the easy part. The work is deciding what a correct answer looks like before you build, writing the evaluation that proves it, and keeping a human gate on anything that touches compliance or money.</p>
+
+    </div>
+  </div>
+</section>
+
 <section id="builds">
   <div class="wrap cols">
     <div>
       <h2>Things I've built</h2>
-      <p class="note">Public repositories. Prototypes run on synthetic data — no client or employer material.</p>
+      <p class="note">Public repositories, most of them AI systems. Prototypes run on synthetic data — no client or employer material.</p>
     </div>
     <div>
 
@@ -373,7 +430,7 @@
         <div>
           <h3>Capgemini</h3>
           <span class="title">Consultant Manager / Technical Scrum Leader</span>
-          <p>Product discovery, requirements, backlog and feature prioritization for a sixteen-feature program increment across five sprints on MyNYL. Weekly reporting for two scrum teams, program RAID ownership, sprint demonstrations for Product Owner sign-off, and scope trade-offs negotiated with Product and Architecture as the backlog shifted.</p>
+          <p>Product discovery, requirements, backlog and feature prioritization for a sixteen-feature program increment across five sprints on MyNYL. Weekly reporting for two scrum teams, program RAID ownership, sprint demonstrations for Product Owner sign-off, and scope trade-offs negotiated with Product and Architecture as the backlog shifted — including the conversational chat API and its enterprise architecture dependencies.</p>
         </div>
       </article>
 
@@ -391,7 +448,7 @@
         <div>
           <h3>JPMorgan Chase</h3>
           <span class="title">Product Delivery Manager, Employee Experience Platforms</span>
-          <p>Co-led the move to a Jobs To Be Done operating model and coordinated roughly 60 engineers, designers and researchers plus interdependent external teams. Cut releases from twice quarterly to monthly, owned the intranet and dual-platform mobile app, served as agility lead for web, mobile and personalization, and put WCAG into the Definition of Done. Administered Jira, Jira Align and Confluence as the org's tooling standard.</p>
+          <p>Co-led the move to a Jobs To Be Done operating model and coordinated roughly 60 engineers, designers and researchers plus interdependent external teams. Cut releases from twice quarterly to monthly, owned the intranet and dual-platform mobile app, served as agility lead for web, mobile and personalization, and helped ship a tag-based agentic benefits content platform resolving employee questions in three clicks or less. Put WCAG into the Definition of Done. Administered Jira, Jira Align and Confluence as the org's tooling standard.</p>
         </div>
       </article>
 
@@ -463,6 +520,15 @@
         </ul>
       </div>
       <div>
+        <h3>AI delivery</h3>
+        <ul>
+          <li><strong>Agentic content platforms</strong> tagged at the source</li>
+          <li><strong>Retrieval-augmented generation</strong> over regulatory corpora</li>
+          <li><strong>Evaluation before release</strong> — question banks, answer keys, adversarial inputs</li>
+          <li><strong>Human review gates</strong> on anything that touches compliance</li>
+        </ul>
+      </div>
+      <div>
         <h3>Building</h3>
         <ul>
           <li>Python, FastAPI</li>
@@ -489,6 +555,18 @@
         <li><span>SAFe 6.0</span><span class="qual">Held</span></li>
         <li><span>Project Management Professional (PMP)</span><span class="qual">In progress</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="wrap cols">
+    <div>
+      <h2>Something you won't find on my resume</h2>
+    </div>
+    <div>
+      <p>I helped create the curriculum for a 12-week Teen Animation and Graphic Design program at Westchester Community College in Peekskill, then brought that same curriculum to SER of Westchester in White Plains to teach computer illustration and animation to ESL teens.</p>
+      <p>Watching a language gap disappear the moment a kid gets a tool that speaks in shapes and motion instead of words — that's stuck with me longer than almost anything on my actual job history.</p>
     </div>
   </div>
 </section>
